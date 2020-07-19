@@ -1,3 +1,9 @@
+#root{
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -26,6 +32,22 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.flex-container {
+  display: flex;
+
+  &.items-center {
+    align-items: center;
+  }
+
+  > .flex-child {
+    flex:1;
+  }
+
+  &.flex-col {
+    flex-direction: column;
+  }
 }
 
 @keyframes App-logo-spin {
