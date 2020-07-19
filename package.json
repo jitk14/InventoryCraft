@@ -1,0 +1,19 @@
+{
+  "name": "inventorycraft",
+  "version": "1.0.0",
+  "description": "Inventory Management for Craft Solution Ltd",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jitk14/InventoryCraft.git"
+  },
+  "author": "Jitendra Choudahry <jitk14@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jitk14/InventoryCraft/issues"
+  },
+  "homepage": "https://github.com/jitk14/InventoryCraft#readme"
+}
