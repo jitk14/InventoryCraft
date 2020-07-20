@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "7.9.0",
     "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -54,6 +55,7 @@
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "resolve": "1.15.0",
@@ -91,6 +93,7 @@
   },
   "devDependencies": {
     "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.5",
     "classnames": "^2.2.6",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2"

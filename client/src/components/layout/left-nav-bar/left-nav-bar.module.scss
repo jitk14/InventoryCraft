@@ -1,0 +1,27 @@
+.leftNav {
+  width: 100%;
+  max-width: 230px;
+  background: #f1f1f1;
+}
+
+.icon {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 5px 0;
+}
+
+.navItem {
+  padding: 0.7rem 1rem;
+  display: block;
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #454545;
+}
+
+.activeNav {
+  border-right: 5px solid #2175c9;
+}

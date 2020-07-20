@@ -6,9 +6,7 @@ import {Loader} from "../../helper/loader/loader";
 
 export type LoginContent = {
     emailLabel: string;
-    emailError: string;
     passwordLabel: string;
-    passwordError: string;
     invalidInput: string;
     submitLabel: string
 }
@@ -101,8 +99,8 @@ export const LoginForm = (props: IProps) => {
 
     return (<div className={`${styles.loginWrapper} flex-container login-form-component`}>
         <div className={`${styles.loginBox} flex-child`}>
-            { props.loading ? <Loader occupyFull={true}/> : null }
-            <Card>
+            <Card style={{position: 'relative'}}>
+                { props.loading ? <Loader occupyFull={true}/> : null }
                 <form onSubmit={props.onSubmit}>
                     <h2 className={`${styles.title} login-title`}>{props.title}</h2>
                     <ul className={`${styles.formContainer} fields-container`}>

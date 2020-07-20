@@ -1,5 +1,7 @@
 /**
- * @description: Login Component for the app
+ * @description: Login Component for the application
+ * This must be shown on the basis of login status state determined external to it.
+ *
  */
 import React, { createRef } from "react";
 import styles from './login-form/login.module.scss';
@@ -11,7 +13,7 @@ interface ILoginProps {
 }
 
 interface IState {
-    loading: false;
+    loading: boolean;
     userEmail?: string;
     password?: string;
     errors: LoginFormErrors
@@ -146,6 +148,10 @@ export class Login extends React.Component<ILoginProps, IState> {
             return;
         }
 
+        this.setState({
+            loading: true
+        })
+
         const payload = {
             email: this.state.userEmail,
             password: this.state.password,
@@ -158,12 +164,13 @@ export class Login extends React.Component<ILoginProps, IState> {
         return 'Account Login';
     }
 
+    /**
+     * Method to get the form labels and contents
+     */
     getContent():LoginContent {
         return {
             emailLabel: 'User email',
-            emailError: 'Email is required',
             passwordLabel: 'Password',
-            passwordError: 'Password is required',
             invalidInput: 'Invalid user email or password',
             submitLabel: 'Log in'
         }
@@ -173,7 +180,7 @@ export class Login extends React.Component<ILoginProps, IState> {
         return (<div className={`${styles.loginWrapper} flex-container`}>
            <LoginForm onEmailChange={this.emailChangeListener} onPasswordChange={this.passwordChangeListener}
                       onEmailBlur={this.validateEmail} onPasswordBlur={this.validatePassword}
-                      onSubmit={this.submitForm} title={this.getTitle()} loading = {false}
+                      onSubmit={this.submitForm} title={this.getTitle()} loading = {this.state.loading}
                       content={this.getContent()} passwordInputRef={this.passwordRef} emailInputRef={this.emailInputRef}
                       errors={this.state.errors}
                       lengths={InputLengths}

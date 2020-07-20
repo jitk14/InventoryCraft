@@ -8,6 +8,7 @@ interface ILoaderProps {
     size?: number;
     color?: string;
     bgOpacity? : number;
+    zIndex?: number
 }
 
 export const Loader = (props: ILoaderProps) => {
@@ -18,7 +19,7 @@ export const Loader = (props: ILoaderProps) => {
 
     return (
         <ul className={getWrapperClass()} style={props.style} >
-            <li style={{opacity: props.bgOpacity || '0.4'}} className={loaderStyles.backDrop}></li>
+            <li style={{opacity: props.bgOpacity || '0.4', zIndex: props.zIndex || 9999}} className={loaderStyles.backDrop}></li>
             <li className={'flex-container flex-child items-center'}>
                 <div className={'flex-child'}>
                     <CircularProgress size={props.size}/>
