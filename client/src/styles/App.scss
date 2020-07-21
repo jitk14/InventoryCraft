@@ -34,8 +34,16 @@
   color: #61dafb;
 }
 
+.text-align-initial {
+  text-align: initial;
+}
+
 .flex-container {
   display: flex;
+
+  &.inline-flex {
+    display: inline-flex;
+  }
 
   &.items-center {
     align-items: center;

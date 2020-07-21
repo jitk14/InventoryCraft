@@ -6,13 +6,15 @@
 import {AppHeader} from './header/header';
 import React from 'react';
 import {LeftNavBar} from "./left-nav-bar/left-nav-bar";
-import { Router } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from "history";
-import ListAltIcon from "@material-ui/icons/ListAlt";
+
+
 import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
 import PeopleIcon from '@material-ui/icons/People';
 import StorageIcon from '@material-ui/icons/Storage';
 import VerticalSplitIcon from '@material-ui/icons/VerticalSplit';
+import {ProductsPage} from "./pages/products-page/products-page";
 
 const history = createBrowserHistory();
 
@@ -50,7 +52,14 @@ export const AppLayout = (_props: unknown) => {
             <Router history={history}>
                 <LeftNavBar navigations={leftNavigations}/>
                 <section className={'app-route-container flex-child'}>
-                    Hey I route container
+                    <Switch>
+                        <Route exact path="/">
+                            <ProductsPage />
+                        </Route>
+                        <Route path="/products">
+                            <ProductsPage />
+                        </Route>
+                    </Switch>
                 </section>
             </Router>
         </section>

@@ -1,0 +1,39 @@
+.thead{
+
+  border-bottom: 1px solid #e2e2e2;
+  border-top: 1px solid #e2e2e2;
+}
+
+.thCell {
+  padding: 1px 5px;
+}
+
+.sortBox {
+  margin-left: 15px;
+  color: #9e9e9e;
+  vertical-align: middle;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.sortAsc {
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background: #dedede;
+  }
+}
+
+.sortDsc {
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background: #dedede;
+  }
+}
+
+.sort-active {
+  color: #2076c9;
+}
