@@ -4,12 +4,15 @@
  *
  */
 import React, { createRef } from "react";
+import {connect} from "react-redux";
 import styles from './login-form/login.module.scss';
 import { isValidEmail } from "../../utils/validators/validators";
 import {LoginContent, LoginForm, LoginFormErrors} from "./login-form/login-form";
+import {loginActionCreator} from "../../store/actions/actions";
+
 
 interface ILoginProps {
-
+    login: (payload:any) => void;
 }
 
 interface IState {
@@ -25,7 +28,7 @@ enum InputLengths {
     EMAIL_MAX = 200
 }
 
-export class Login extends React.Component<ILoginProps, IState> {
+class LoginComp extends React.Component<ILoginProps, IState> {
     private passwordRef = createRef<HTMLInputElement>();
     private emailInputRef = createRef<HTMLInputElement>();
 
@@ -157,7 +160,7 @@ export class Login extends React.Component<ILoginProps, IState> {
             password: this.state.password,
         };
 
-        console.log("Submit triggered");
+        this.props.login(payload)
     }
 
     getTitle() {
@@ -188,3 +191,11 @@ export class Login extends React.Component<ILoginProps, IState> {
         </div>);
     }
 }
+
+function mapDispatchToProps(dispatch: any) {
+    return {
+        login: (payload: any) => { dispatch(loginActionCreator(payload)) }
+    }
+}
+
+export const Login = connect(null, mapDispatchToProps)(LoginComp)

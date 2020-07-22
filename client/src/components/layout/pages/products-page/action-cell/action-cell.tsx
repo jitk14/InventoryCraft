@@ -38,6 +38,11 @@ export const ActionCell = (props: ICellProps) => {
         updateProduct && updateProduct(cellData.productId);
     }
 
+    const deleteProduct = (_ev: any) => {
+        const deleteProduct = _get(props, 'handlers.deleteProduct');
+        deleteProduct && deleteProduct(cellData.productId);
+    }
+
     const renderSaveIcons = () => {
         return (
             <React.Fragment>
@@ -51,7 +56,7 @@ export const ActionCell = (props: ICellProps) => {
         return (
             <React.Fragment>
                 <EditIcon onClick={enableEditing}/>
-                <DeleteIcon onClick={() => {alert("Delete: " + cellData.productId)}}/>
+                <DeleteIcon onClick={deleteProduct}/>
             </React.Fragment>
         );
     }

@@ -12,9 +12,10 @@ import { createBrowserHistory } from "history";
 
 import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
 import PeopleIcon from '@material-ui/icons/People';
-import StorageIcon from '@material-ui/icons/Storage';
 import VerticalSplitIcon from '@material-ui/icons/VerticalSplit';
 import {ProductsPage} from "./pages/products-page/products-page";
+import {connect} from "react-redux";
+import {Login} from "../login/login";
 
 const history = createBrowserHistory();
 
@@ -39,23 +40,40 @@ const leftNavigations = [
     },
 ];
 
-export const AppLayout = (_props: unknown) => {
-    return (<React.Fragment>
-        <AppHeader/>
-        <section className={'flex-container flex-child'}>
-            <Router history={history}>
-                <LeftNavBar navigations={leftNavigations}/>
-                <section className={'app-route-container flex-child'} style={{position: 'relative'}}>
-                    <Switch>
-                        <Route exact path="/">
-                            <ProductsPage />
-                        </Route>
-                        <Route path="/products">
-                            <ProductsPage />
-                        </Route>
-                    </Switch>
-                </section>
-            </Router>
-        </section>
-    </React.Fragment>);
+interface ILayoutProps {
+    user?: any;
 }
+
+class AppLayoutComp  extends React.Component<ILayoutProps, any>{
+
+    constructor(_props: ILayoutProps) {
+        super(_props);
+    }
+
+    render() {
+        if (!this.props.user) {
+            return <Login />
+        }
+
+        return (<React.Fragment>
+            <AppHeader/>
+            <section className={'flex-container flex-child'}>
+                <Router history={history}>
+                    <LeftNavBar navigations={leftNavigations}/>
+                    <section className={'app-route-container flex-child'} style={{position: 'relative'}}>
+                        <Switch>
+                            <Route exact path="/">
+                                <ProductsPage/>
+                            </Route>
+                            <Route path="/products">
+                                <ProductsPage/>
+                            </Route>
+                        </Switch>
+                    </section>
+                </Router>
+            </section>
+        </React.Fragment>);
+    }
+}
+
+export const AppLayout = connect((state: any) => {return {user: state.user}}, null)(AppLayoutComp);

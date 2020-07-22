@@ -10,6 +10,7 @@ import {QuantityTextCell} from "./quantity-text-cell/quantity-text-cell";
 import axios from 'axios';
 import _find from 'lodash/find';
 import _isEquals from 'lodash/isEqual';
+import _remove from 'lodash/remove';
 import {Loader} from "../../../helper/loader/loader";
 
 const ROW_IDENTIFIER = 'productId';
@@ -47,7 +48,7 @@ export class ProductsPage extends React.Component<any, IProdsState> {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8000/inventory`)
+        axios.get(`/inventory`)
             .then(res => {
                 this.setState({
                     productsData: res.data.data,
@@ -55,10 +56,6 @@ export class ProductsPage extends React.Component<any, IProdsState> {
                     isLoading: false
                 });
             });
-    }
-
-    deleteProduct() {
-
     }
 
     enableEntryEdit = (productId: string, entryData: any) => {
@@ -102,7 +99,8 @@ export class ProductsPage extends React.Component<any, IProdsState> {
             enableEntryEdit: this.enableEntryEdit,
             clearEntryEdit: this.clearEntryEdit,
             updateProduct: this.updateProduct,
-            handleProductPropertyChange: this.handleProductPropertyChange
+            handleProductPropertyChange: this.handleProductPropertyChange,
+            deleteProduct: this.deleteProduct
         }
     }
 
@@ -120,7 +118,7 @@ export class ProductsPage extends React.Component<any, IProdsState> {
             this.setState({
                 isLoading: true
             })
-            axios.post('http://localhost:8000/update', {...productData.data}).then(() => {
+            axios.post('/update', {...productData.data}).then(() => {
                 this.clearEntryEdit(productId);
                 this.replaceProductData(productData);
             }).catch((err) => {
@@ -132,6 +130,28 @@ export class ProductsPage extends React.Component<any, IProdsState> {
             })
         }
 
+    }
+
+    deleteProduct = (productId: string) => {
+        this.setState({
+            isLoading: true
+        })
+        axios.post('/update', {productId}).then(() => {
+            const productsData = _remove(this.state.productsData, (product) => {
+                return product.productId !== productId;
+            });
+
+            this.setState({
+                productsData,
+            });
+
+        }).catch((err) => {
+            alert("Something went wrong, product update was unsuccessful");
+        }).finally(() => {
+            this.setState({
+                isLoading: false
+            })
+        });
     }
 
     replaceProductData = (updatedProduct: any) => {

@@ -1,7 +1,7 @@
 /**
  * @description: isLoggedIn state slice reducer
  */
-import { SET_USER } from '../actions/actions';
+import { LOGGED_IN } from '../actions/actions';
 
 type UserState = {
     isLoggedIn: boolean;
@@ -12,10 +12,10 @@ type UserState = {
 const initialUserState = null;
 
 export const user = (userState: UserState | null = initialUserState, action: any = {}): UserState | null => {
-    const { actionType, payload } = action;
+    const { type, payload } = action;
 
-    switch (actionType) {
-        case SET_USER: {
+    switch (type) {
+        case LOGGED_IN: {
             return {...payload};
         }
         default: return userState;

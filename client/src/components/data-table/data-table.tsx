@@ -62,7 +62,8 @@ export class DataTable extends React.Component<IDataTableProps, IDataTableState>
     componentDidUpdate(prevProps: Readonly<IDataTableProps>, prevState: Readonly<IDataTableState>, snapshot?: any) {
         if (prevProps.data !== this.props.data) {
             this.setState({
-                tableData : this.props.data
+                tableData : this.props.data,
+                currentPageIndex: this.normalizeCurrentPageIndex(this.props.data.length)
             })
         }
 
@@ -74,6 +75,16 @@ export class DataTable extends React.Component<IDataTableProps, IDataTableState>
                 }
             });
         }
+    }
+
+    normalizeCurrentPageIndex(dataLength: number) {
+        const newLastPageIndex = Math.ceil(dataLength/this.state.perPageEntries) - 1;
+
+        if (newLastPageIndex-1 < this.state.currentPageIndex) {
+            return newLastPageIndex < 0 ? 0 : newLastPageIndex;
+        }
+
+        return this.state.currentPageIndex;
     }
 
 
