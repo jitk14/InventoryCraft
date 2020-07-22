@@ -10,6 +10,7 @@ export type ColumnCell = {
     isSortable?: boolean;
     sortedType?: SortTypes;
     sortable?: boolean;
+    asNumber?: boolean
     renderer?: typeof React.Component | React.JSXElementConstructor<any>
 };
 
@@ -37,15 +38,17 @@ export const TableHead = (props: ITableHeadProps) => {
 
         return (
             <span className={`${styles.sortBox} flex-container flex-col inline-flex`} >
-                <ArrowDropUpIcon className={`${styles.sortAsc} sort-asc ${styles[getActiveSortClass(SortTypes.ASC, column.sortedType)]}`}/>
-                <ArrowDropDownIcon className={`${styles.sortDsc} sort-dsc ${styles[getActiveSortClass(SortTypes.DSC, column.sortedType)]}`}/>
+                <ArrowDropUpIcon className={`${styles.sortAsc} sort-asc ${styles[getActiveSortClass(SortTypes.ASC, column.sortedType)]}`}
+                    onClick={() => {props.sortHandler(column.columnKey, SortTypes.ASC)}}/>
+                <ArrowDropDownIcon className={`${styles.sortDsc} sort-dsc ${styles[getActiveSortClass(SortTypes.DSC, column.sortedType)]}`}
+                    onClick={() => {props.sortHandler(column.columnKey, SortTypes.DSC)}}/>
             </span>
         );
     }
 
     const getColumnCell = (column: ColumnCell) => {
         return (
-            <td className={`${styles.thCell} data-table-th-cell`}>
+            <td className={`${styles.thCell} data-table-th-cell`} key={column.columnKey}>
                 <span className={`nvt-table-head-cell`}>{column.label}</span>
                 {getSortingBox(column)}
             </td>

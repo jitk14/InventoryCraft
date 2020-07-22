@@ -22,7 +22,7 @@
      const navigations =  props.navigations || [];
 
      return (
-         <nav className={`${styles.leftNav} left-nav-bar`}>
+         <nav className={`${styles.leftNav} left-nav-bar`} >
                 {
                     navigations.map((navItem) => {
                         const IconComp: any = navItem.icon;

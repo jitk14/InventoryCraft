@@ -26,19 +26,13 @@ const leftNavigations = [
         label: 'Products',
     },
     {
-        name: 'inventory-nav-link',
-        icon: StorageIcon,
-        path: '/inventories',
-        label: 'Inventory',
-    },
-    {
-        name: 'inventory-nav-link',
+        name: 'settings-nav-link',
         icon: SettingsApplicationsIcon,
         path: '/settings',
         label: 'Settings',
     },
     {
-        name: 'inventory-nav-link',
+        name: 'users-nav-link',
         icon: PeopleIcon,
         path: '/users',
         label: 'Users',

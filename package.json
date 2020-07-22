@@ -4,7 +4,7 @@
   "description": "Inventory Management for Craft Solution Ltd",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/jitk14/InventoryCraft/issues"
   },
-  "homepage": "https://github.com/jitk14/InventoryCraft#readme"
+  "homepage": "https://github.com/jitk14/InventoryCraft#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "uuid": "^8.2.0"
+  }
 }

@@ -7,7 +7,7 @@ export const SelectCell = (props: ICellProps) => {
 
     return (
         <div>
-            <Checkbox value={true} onChange={(ev)=> {alert("Checked Value:" + ev.target.checked)}}/>
+            <Checkbox value={true} onChange={(ev)=> {}}/>
         </div>
     );
 }

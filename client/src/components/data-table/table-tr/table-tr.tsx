@@ -17,7 +17,7 @@ export const TableRow = (props: IRowProps) => {
                 const CustomRenderer = getCustomRenderer(column);
 
                 if (CustomRenderer) {
-                    return (<td>
+                    return (<td key={column.columnKey}>
                         <CustomRenderer cellData={props.cellData} columnCell={column} />
                     </td>);
                 }
