@@ -3,7 +3,9 @@ import {ColumnCell} from "../table-head/table-head";
 
 interface IRowProps {
     columns: Array<ColumnCell>
-    cellData: any
+    cellData: any,
+    metaData?: any,
+    handlers? : Record<any, any>
 }
 
 export const TableRow = (props: IRowProps) => {
@@ -17,8 +19,9 @@ export const TableRow = (props: IRowProps) => {
                 const CustomRenderer = getCustomRenderer(column);
 
                 if (CustomRenderer) {
-                    return (<td key={column.columnKey}>
-                        <CustomRenderer cellData={props.cellData} columnCell={column} />
+                    return (<td key={column.columnKey} >
+                        <CustomRenderer cellData={props.cellData} columnCell={column} metaData={props.metaData}
+                                        handlers={props.handlers} />
                     </td>);
                 }
 

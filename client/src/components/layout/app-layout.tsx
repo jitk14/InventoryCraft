@@ -45,7 +45,7 @@ export const AppLayout = (_props: unknown) => {
         <section className={'flex-container flex-child'}>
             <Router history={history}>
                 <LeftNavBar navigations={leftNavigations}/>
-                <section className={'app-route-container flex-child'}>
+                <section className={'app-route-container flex-child'} style={{position: 'relative'}}>
                     <Switch>
                         <Route exact path="/">
                             <ProductsPage />

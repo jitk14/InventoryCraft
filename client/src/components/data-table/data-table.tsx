@@ -15,7 +15,9 @@ interface IDataTableProps {
     data: Array<any>;
     identifierKey: string;
     perPageViewLengths: Array<number>,
-    sortFunctions?: Record<string, (a:any, b:any) => number>
+    sortFunctions?: Record<string, (a:any, b:any) => number>,
+    metaData?: Record<any, any>;
+    handlers?: Record<any, any>;
 }
 
 type SortOrder = {
@@ -37,7 +39,8 @@ export interface ICellProps {
     identifierKey: string;
     columnCell: ColumnCell;
     columnKey: string;
-    editing: boolean;
+    metaData: any;
+    enableEntryEdit: (entryId: string, columnData: any) => void;
 };
 
 
@@ -205,7 +208,8 @@ export class DataTable extends React.Component<IDataTableProps, IDataTableState>
             {
                 this.getDataForPageIndex(this.state.currentPageIndex, this.state.perPageEntries).map((rowData: any) => {
                     return (
-                        <TableRow key={rowData[this.props.identifierKey]} cellData={rowData} columns={this.props.columns}/>
+                        <TableRow key={rowData[this.props.identifierKey]} cellData={rowData} columns={this.props.columns}
+                                  metaData={this.props.metaData} handlers={this.props.handlers}/>
                     );
                 })
             }

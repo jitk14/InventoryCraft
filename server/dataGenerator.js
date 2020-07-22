@@ -45,7 +45,19 @@ const generateData = () => {
             vendorLink: 'https://vendor.example.com',
             quantity: Math.floor(Math.random() * 200),
         });
+
     }
+
+    data.push({
+        productId: uuidv4(),
+        productName: 'unique',
+        category: 'Important',
+        categoryCode: 'sasasas',
+        pricePerUnit: 999,
+        shelfNumber: `SH89989`,
+        vendorLink: 'https://vendor.example.com',
+        quantity: 99,
+    });
 
     return {
         categories: categories,
